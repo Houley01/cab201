@@ -8,19 +8,21 @@ public class StringOrder
     {
         System.String nameA;
         System.String nameB;
+        int placeOrder;
         // Name A Part
         Console.WriteLine("What is name A?");
-        Console.Write("Name: ");
         nameA = System.Console.ReadLine();
         // System.Console.WriteLine(name1); // Debuging section
         // Name B part
         Console.WriteLine("What is name B?");
-        Console.Write("Name: ");
         nameB = System.Console.ReadLine();
 
         // Compare the names to gether
         // {A} Precedes(Comes Before) {B}
-        System.Console.WriteLine("{0} {1} {2}", nameA, (nameA.CompareTo(nameB)).Order, nameB);
+        placeOrder = nameA.CompareTo(nameB);
+        // Order a=(Order)placeOrder;
+        // System.Console.WriteLine(a);
+       System.Console.WriteLine("{0} {1} {2}", nameA, (Order)placeOrder, nameB);
         System.Console.ReadLine();
         // {A} Equals {B}
         // System.Console.WriteLine();
