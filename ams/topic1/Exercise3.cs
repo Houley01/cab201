@@ -16,22 +16,16 @@ public class StringOrder
         // Name B part
         Console.WriteLine("What is name B?");
         nameB = System.Console.ReadLine();
+        //  Remove Name from user input
+        nameA = nameA.Substring(6);
+        nameB = nameB.Substring(6);
 
         // Compare the names to gether
         // {A} Precedes(Comes Before) {B}
         placeOrder = nameA.CompareTo(nameB);
         // Order a=(Order)placeOrder;
         // System.Console.WriteLine(a);
-       System.Console.WriteLine("{0} {1} {2}", nameA, (Order)placeOrder, nameB);
+        System.Console.WriteLine("{0} {1} {2}", nameA, (Order)placeOrder, nameB);
         System.Console.ReadLine();
-        // {A} Equals {B}
-        // System.Console.WriteLine();
-        // System.Console.ReadLine();
-        // // {A} Follows {B}
-
-        // System.Console.WriteLine();
-        // System.Console.ReadLine();
-        // So the program does not close
-        // System.Console.ReadLine();
     }
 }
