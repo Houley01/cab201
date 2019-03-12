@@ -6,32 +6,33 @@ class IncomeTax
     {
         // Var 
         bool income_valid = false, children_valid = false;
-        string temp_total_income, temp_number_of_children;
+        string temp_total_income = "0", temp_number_of_children = "0";
         int total_income, number_of_children;
         double tax_ammount = 0;
-
+        int deductions_per_kid = 2000, standard_deduction = 10000;
         // Total income
-        while(income_valid == false) {
+        while (income_valid == false)
+        {
             Console.Write("What is your total income: ");
             temp_total_income = System.Console.ReadLine();
-            
+
             if (int.TryParse(temp_total_income, out total_income))
             {
-                if (total_income < 0 )
+                if (total_income < 0)
                 {
-                    Console.WriteLine("Your income cannot be negative");
+                    Console.WriteLine("Your income cannot be negative.");
                 }
-                else {
+                else
+                {
                     income_valid = true;
-                    globe total_income = total_income;
                 }
             }
-            else {
+            else
+            {
 
                 Console.WriteLine("Enter your income as a whole-dollar figure.");
             }
         }
-            Console.WriteLine(total_income);
 
         // Total number of children
         while (children_valid == false)
@@ -43,7 +44,7 @@ class IncomeTax
             {
                 if (number_of_children < 0)
                 {
-                    Console.WriteLine("You cannot have negative number of children");
+                    Console.WriteLine("You must enter a positive number.");
                 }
                 else
                 {
@@ -52,16 +53,26 @@ class IncomeTax
             }
             else
             {
-                Console.WriteLine("You must enter a vaild number.");
+                Console.WriteLine("You must enter a valid number.");
             }
         }
-        Console.WriteLine(tax_ammount);
-    //     if (total_income >= 0)
-    //     {
-    //         Console.WriteLine("You owe no tax");   
-    //     } else {
-    //         Console.WriteLine("You owe a total of ${0} tax", tax_ammount);
-    //     }
-    //       // System.Console.WriteLine(total_income);
+
+        // Convert all to ints numbers
+        total_income = Convert.ToInt32(temp_total_income);
+        number_of_children = Convert.ToInt32(temp_number_of_children);
+
+        // How much tax is owed
+        total_income = total_income - (standard_deduction + (deductions_per_kid * number_of_children));
+        if (total_income <= 0)
+        {
+            Console.WriteLine("You owe no tax.");
+        }
+        else
+        {
+            tax_ammount = total_income * 0.02;
+            Console.WriteLine("You owe a total of ${0:F2} tax", tax_ammount);
+        }
+        Console.WriteLine("\n\n Hit Enter to exit.");
+        Console.ReadLine();
     }
 }
