@@ -1,78 +1,57 @@
 using System;
 
-class IncomeTax
+namespace RandomArray
 {
-    public static void Main()
+    public class RandomArrayNoDuplicates
     {
-        // Var 
-        bool income_valid = false, children_valid = false;
-        string temp_total_income = "0", temp_number_of_children = "0";
-        int total_income, number_of_children;
-        double tax_ammount = 0;
-        int deductions_per_kid = 2000, standard_deduction = 10000;
-        // Total income
-        while (income_valid == false)
+        public static void Main()
         {
-            Console.Write("What is your total income: ");
-            temp_total_income = System.Console.ReadLine();
-
-            if (int.TryParse(temp_total_income, out total_income))
-            {
-                if (total_income < 0)
-                {
-                    Console.WriteLine("Your income cannot be negative.");
-                }
-                else
-                {
-                    income_valid = true;
-                }
-            }
-            else
-            {
-
-                Console.WriteLine("Enter your income as a whole-dollar figure.");
-            }
+            ArrayWithNoDuplicates(25);
         }
-
-        // Total number of children
-        while (children_valid == false)
+        static Random rng = new Random();
+        /// <summary>
+        /// Creates an array with each element a unique integer
+        /// between 1 and 45 inclusively.
+        /// </summary>
+        /// <param name="size"> length of the returned array < 45
+        /// </param>
+        /// <returns>an array of length "size" and each element is
+        /// a unique integer between 1 and 45 inclusive </returns>
+        public static string MatrixToString(int[] matrix)
         {
-            Console.Write("How many children do you have: ");
-            temp_number_of_children = System.Console.ReadLine();
-
-            if (int.TryParse(temp_number_of_children, out number_of_children))
+            string cell;
+            for (int left_side = 0; left_side < matrix.Length; left_side++)
             {
-                if (number_of_children < 0)
+                cell = Convert.ToString(matrix[left_side]);
+                Console.Write(string.Format("{0}\n", cell)); ;
+            }
+            return null;
+        }
+        public static int[] ArrayWithNoDuplicates(int LengthOfArray)
+        {
+            int[] array_with_no_duplicates = new int[LengthOfArray];
+            int randomNum, i = 0;
+            bool arraySize = false;
+            // for (int i = 0; i < array_with_no_duplicates.Length; i++)
+            while (arraySize == false)
+            {
+                randomNum = rng.Next(0, 45);
+                Console.WriteLine(randomNum);
+                if (i == LengthOfArray)
                 {
-                    Console.WriteLine("You must enter a positive number.");
+                    arraySize = true;
+                    break;
                 }
-                else
+                if (!Array.Exists(array_with_no_duplicates, element => element == randomNum))
                 {
-                    children_valid = true;
+                    array_with_no_duplicates[i] = randomNum;
+
+                    i += 1;
                 }
             }
-            else
-            {
-                Console.WriteLine("You must enter a valid number.");
-            }
+            // Array.Sort(array_with_no_duplicates);
+            MatrixToString(array_with_no_duplicates);
+            return null;
         }
-
-        // Convert all to ints numbers
-        total_income = Convert.ToInt32(temp_total_income);
-        number_of_children = Convert.ToInt32(temp_number_of_children);
-
-        // How much tax is owed
-        total_income = total_income - (standard_deduction + (deductions_per_kid * number_of_children));
-        if (total_income <= 0)
-        {
-            Console.WriteLine("You owe no tax.");
-        }
-        else
-        {
-            tax_ammount = total_income * 0.02;
-            Console.WriteLine("You owe a total of ${0:F2} tax", tax_ammount);
-        }
-        Console.WriteLine("\n\n Hit Enter to exit.");
-        Console.ReadLine();
     }
 }

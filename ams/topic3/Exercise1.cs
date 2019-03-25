@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Linear_Search {
+namespace Linear_Search
+{
 
     /// <summary>
     /// 
@@ -14,17 +15,19 @@ namespace Linear_Search {
     /// date: March 2009
     /// 
     /// </summary>
-    class Program {
+    class Program
+    {
 
 
-        static void Main(string[] args) {
-            
+        static void Main(string[] args)
+        {
+
             const string Start_Message = "\n\tWelcome to Linear Search Demonstration\n"
                                         + "\n The array contains the following 9 words:\n\n";
 
-            string[] words = {"the", "quick", "brown", "fox", 
-                              "jumps", "over", "the", "lazy", "dog"};
-            
+            string[] words = {"the", "quick", "brown", "fox",
+              "jumps", "over", "the", "lazy", "dog"};
+            // string[] words = { };
             int location;
 
             OutputMessage(Start_Message);
@@ -45,8 +48,8 @@ namespace Linear_Search {
 
             location = LinearSearch(words, "dog");
             OutputSearchResult(location, "dog");
-           
-             ExitProgram();
+
+            ExitProgram();
 
         } //end Main
 
@@ -57,21 +60,19 @@ namespace Linear_Search {
         /// <param name="word">the word being searched for</param>
         /// <returns> position of "word" in "words" if it is there
         ///             otherwise returns -1    </returns>
-        public static int LinearSearch(string[] words, string word) {
-            
-            int position = 0;
-            while ((position < words.Length) && (words[position] != word))
+        public static int LinearSearch(string[] words, string word)
+        {
+
+            // int position = 0;
+            // Console.WriteLine("array length: {0}", words.Length); // to find out the words.lenght works
+            for (int i = 0; i < words.Length; i++)
             {
-                position++;
-                if (position > words.Length)
+                if (words[i] == word)
                 {
-                    return position;
-                }
-                if (position >= words.Length)
-                {
-                    return -1;
+                    return i;
                 }
             }
+            return -1;
 
             /*
              * while ((position < words.Length) && (words[position] != word))
@@ -86,18 +87,20 @@ namespace Linear_Search {
              */
 
             // following return provided so that code compiles
-            return position; // it can be deleted once above algorithm is completed
+            // return position; // it can be deleted once above algorithm is completed
 
         } //end LinearSearch
 
-        
+
         /// <summary>
         /// Displays the elements of the array "words"
         /// </summary>
         /// <param name="words">array to be displayed</param>
-        static void DisplayArray(string[] words) {
+        static void DisplayArray(string[] words)
+        {
 
-            foreach (string element in words) {
+            foreach (string element in words)
+            {
                 OutputMessage("\t" + element + "\n");
             }
             Console.WriteLine();
@@ -110,13 +113,17 @@ namespace Linear_Search {
         /// <param name="position">either the position of "word" if it was found
         ///                         or -1 if "word" was not found</param>
         /// <param name="word"></param>
-        static void OutputSearchResult(int position, string word) {
+        static void OutputSearchResult(int position, string word)
+        {
             string continueMessage = "\nPress any key to continue:";
 
-            if (position < 0) {
+            if (position < 0)
+            {
                 Console.WriteLine("the word \"{0}\" not found in the list\n ", word);
-            } else {
-                Console.WriteLine("the word \"{0}\" found in position {1} in the list\n",word, position);
+            }
+            else
+            {
+                Console.WriteLine("the word \"{0}\" found in position {1} in the list\n", word, position);
             }
 
             OutputMessage(continueMessage);
@@ -128,12 +135,14 @@ namespace Linear_Search {
         /// Outputs the string "s"
         /// </summary>
         /// <param name="s">String to be output</param>
-        static void OutputMessage(string s) {
-          
+        static void OutputMessage(string s)
+        {
+
             Console.Write(s);
         }// end OutPutMessage
 
-        static void ExitProgram() {
+        static void ExitProgram()
+        {
             OutputMessage("\n\nPress any key to exit program: ");
             Console.ReadKey();
         }//end ExitProgram

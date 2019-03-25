@@ -1,78 +1,110 @@
 using System;
 
-class IncomeTax
+class MatrixLibrary
 {
     public static void Main()
     {
-        // Var 
-        bool income_valid = false, children_valid = false;
-        string temp_total_income = "0", temp_number_of_children = "0";
-        int total_income, number_of_children;
-        double tax_ammount = 0;
-        int deductions_per_kid = 2000, standard_deduction = 10000;
-        // Total income
-        while (income_valid == false)
-        {
-            Console.Write("What is your total income: ");
-            temp_total_income = System.Console.ReadLine();
+        // int[,] array_1 =
+        // {
+        //     {1, 4, 2},
+        //     {2, 5, 1}
+        // };
+        // int[,] array_2 = new int[,]
+        // {
+        //     {10, 5, 2},
+        //     {2, 34, 2},
+        //     {2, 25, 2}
+        // };
+        // int[,] array_2 =
+        // {
+        //     {3, 4, 2},
+        //     {3, 5, 7},
+        //     {1, 2, 1}
+        // };
+        // MatrixToString(array_2);
 
-            if (int.TryParse(temp_total_income, out total_income))
+        // int[,] ams =
+        // {
+        //     {184, 579, 531, 325},
+        //     {129, 611, 421, 184},
+        //     {199, 779, 657, 360}
+        // };
+        // MatrixToString(ams);
+
+
+        int[,] array_1 = new int[,]
+        {
+            {11,  5,   6,   13,  15},
+            {7,   19,  2,   5,   8},
+            {9,   15,  14,  11,  12}
+        };
+        int[,] array_2 =
+        {
+            {5,   13,  2,   1},
+            {2,   19,  11,  2},
+            {3,   11,  11,  8},
+            {2,   5,   16,  7},
+            {5,   14,  12,  11}
+        };
+
+        MatrixMultiply(array_1, array_2);
+
+    }
+    public static string MatrixToString(int[,] matrix_2d)
+    {
+        string cell;
+        for (int left_side = 0; left_side < matrix_2d.GetLength(0); left_side++)
+        {
+            for (int right_side = 0; right_side < matrix_2d.GetLength(1); right_side++)
             {
-                if (total_income < 0)
+                cell = Convert.ToString(matrix_2d[left_side, right_side]);
+                Console.Write(string.Format("{0, -4}", cell));
+                // Console.Write(matrix_2d[left_side, right_side]);
+            }
+            Console.Write("\n");
+        }
+        return null;
+    }
+
+    public static int[,] MatrixMultiply(int[,] matrix_a, int[,] matrix_b)
+    {
+        // Matrix_a (Rows) Need to match Matrix_b (columns)
+        // array.GetLength(0) 0 == row count
+        // array.GetLength(1) 1 == column count
+        // Console.WriteLine("Matrix_a row count: {0}", matrix_a.GetLength(0));
+        // Console.WriteLine("Matrix_b column count: {0}", matrix_b.GetLength(1));
+        int row, column;
+        row = matrix_a.GetLength(0);
+        column = matrix_b.GetLength(1);
+        int[,] c = new int[row, column];
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < column; j++)
+            {
+                if (column == 2)
                 {
-                    Console.WriteLine("Your income cannot be negative.");
+                    for (int k = 0; k < (column + 1); k++)
+                    {
+                        c[i, j] += (matrix_a[i, k] * matrix_b[k, j]);
+                    }
+                }
+                else if (column == 4)
+                {
+                    for (int k = 0; k < (column + 1); k++)
+                    {
+                        c[i, j] += (matrix_a[i, k] * matrix_b[k, j]);
+                    }
                 }
                 else
                 {
-                    income_valid = true;
+                    for (int k = 0; k < (column); k++)
+                    {
+                        c[i, j] += (matrix_a[i, k] * matrix_b[k, j]);
+                    }
                 }
             }
-            else
-            {
-
-                Console.WriteLine("Enter your income as a whole-dollar figure.");
-            }
         }
-
-        // Total number of children
-        while (children_valid == false)
-        {
-            Console.Write("How many children do you have: ");
-            temp_number_of_children = System.Console.ReadLine();
-
-            if (int.TryParse(temp_number_of_children, out number_of_children))
-            {
-                if (number_of_children < 0)
-                {
-                    Console.WriteLine("You must enter a positive number.");
-                }
-                else
-                {
-                    children_valid = true;
-                }
-            }
-            else
-            {
-                Console.WriteLine("You must enter a valid number.");
-            }
-        }
-
-        // Convert all to ints numbers
-        total_income = Convert.ToInt32(temp_total_income);
-        number_of_children = Convert.ToInt32(temp_number_of_children);
-
-        // How much tax is owed
-        total_income = total_income - (standard_deduction + (deductions_per_kid * number_of_children));
-        if (total_income <= 0)
-        {
-            Console.WriteLine("You owe no tax.");
-        }
-        else
-        {
-            tax_ammount = total_income * 0.02;
-            Console.WriteLine("You owe a total of ${0:F2} tax", tax_ammount);
-        }
-        Console.WriteLine("\n\n Hit Enter to exit.");
-        Console.ReadLine();
+        MatrixToString(c);
+        return c;
     }
 }
