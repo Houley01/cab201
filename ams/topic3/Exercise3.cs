@@ -6,7 +6,7 @@ namespace RandomArray
     {
         public static void Main()
         {
-            ArrayWithNoDuplicates(25);
+            MatrixToString(ArrayWithNoDuplicates(25));
         }
         static Random rng = new Random();
         /// <summary>
@@ -36,7 +36,7 @@ namespace RandomArray
             while (arraySize == false)
             {
                 randomNum = rng.Next(0, 45);
-                Console.WriteLine(randomNum);
+                // Console.WriteLine(randomNum);
                 if (i == LengthOfArray)
                 {
                     arraySize = true;
@@ -50,8 +50,8 @@ namespace RandomArray
                 }
             }
             // Array.Sort(array_with_no_duplicates);
-            MatrixToString(array_with_no_duplicates);
-            return null;
+            // MatrixToString(array_with_no_duplicates);
+            return array_with_no_duplicates;
         }
     }
 }
