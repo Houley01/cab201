@@ -21,8 +21,8 @@ namespace CompoundInterestCalculator
 
                 if (menuOption != EXIT)
                 {
-                    double finalAmount = CalculateInterest(menuOption);
-                    OutputResult(finalAmount);
+
+                    OutputResult(CalculateInterest(menuOption));
                 }
             } while (menuOption != EXIT);
 
@@ -56,7 +56,7 @@ namespace CompoundInterestCalculator
         {
             // Display the message "The final amount of money plus interest is: $(amount)"
             // The amount should display as currency, with two decimal places, e.g. $10,000.00
-            Console.WriteLine("${c}", finalAmount);
+            Console.WriteLine("The final amount of money plus interest is: {0:C}", finalAmount);
         } // end OutputResult
 
         static int ReadOption()
@@ -85,11 +85,8 @@ namespace CompoundInterestCalculator
             // (For this exercise, we will assume the user is inputting correct input.)
             double principal;
             double interestRate;
-            double numYears;
-            double finalAmount;
-            const int daily = 365;
-            // const int quarterly = 4;
-
+            int numYears;
+            double totalAmount = 0;
 
             Console.Write("Enter the principal amount: ");
             principal = Double.Parse(Console.ReadLine());
@@ -98,53 +95,76 @@ namespace CompoundInterestCalculator
             interestRate = Double.Parse(Console.ReadLine());
 
             Console.Write("Enter the number of years that interest is accumulated for: ");
-            numYears = double.Parse(Console.ReadLine());
+            numYears = Int32.Parse(Console.ReadLine());
 
             if (menuOption == CALCULATE_DAILY || menuOption == CALCULATE_QUARTERLY)
             {
                 if (menuOption == CALCULATE_DAILY)
                 {
                     // Call the appropriate CalculateCompoundInterest method
-                    // double exponent = daily * numYears;
-                    
-                    double body = (1 + interestRate / daily);
-                    // double exponent = daily * numYears;
-                    finalAmount = principal + body;//Math.Pow(body, exponent);
+                    totalAmount = CalculateCompoundInterest(principal, interestRate, numYears);
                 }
-                else // Quarterly
+                else
                 {
                     // Call the appropriate CalculateCompoundInterest method
-                    double body = 1 + (interestRate / CALCULATE_QUARTERLY);
+                    // totalAmount = CalculateCompoundInterestQuarterly(principal, interestRate, numYears);
+                    totalAmount = CalculateCompoundInterest(principal, interestRate, numYears);
 
-                    double exponent = CALCULATE_QUARTERLY * numYears;
-
-                    finalAmount = Math.Pow(body, exponent);
                 }
             }
-            else // how ever often the terms are.
+            else
             {
                 Console.Write("Enter the number of times the interest is compounded yearly: ");
-                double numTimesCompounded = double.Parse(Console.ReadLine());
+                int numTimesCompounded = Int32.Parse(Console.ReadLine());
                 // Call the appropriate CalculateCompoundInterest method
-                double body = 1 + (interestRate / numTimesCompounded);
+                totalAmount = CalculateCompoundInterest(principal, interestRate, numYears, numTimesCompounded);
 
-                double exponent = numTimesCompounded * numYears;
-
-               finalAmount = Math.Pow(body, exponent);
             }
-            Console.WriteLine();
 
-            return finalAmount;
+            Console.WriteLine();
+            return totalAmount;
             // return the amount calculated by the compound interest method
         } // End CalculateInterest
 
         // Declare and implement the method CalculateCompoundInterest whose parameters are the principal, interest rate, and number of years (in that order)- make sure it is public!
         // For the declaration select an appropriate modifier, return type, and types for the parameters
         // This version assumes the interest is compounded daily (365 times a year)
+        public static double CalculateCompoundInterest(double principal, double interestRate, int numYears)
+        {
+            // (1 + r/n)
+            int daily = 365;
+            double body = (1 + (interestRate / daily));
 
+            // nt
+            double exponent = daily * numYears;
+
+            // Body to the Power expontents
+            double mid = Math.Pow(body, exponent);
+
+            // P(1 + r/n)^nt
+            double total = principal * mid;
+
+            return total;
+        }
         // Declare and implement the method CalculateCompoundInterest whose parameters are the principal, interest rate, number of years, and number of times compounded yearly - make sure it is public!
-        // For the declaration  select an appropriate modifier, return type, and types for the parameters
-        // This version allows the number of times compounded yearly to be specified.
+        // public static double CalculateCompoundInterestYearly(double principal, double interestRate, int numYears, 
+        // // For the declaration  select an appropriate modifier, return type, and types for the parameters
+        // // This version allows the number of times compounded yearly to be specified.
+        public static double CalculateCompoundInterest(double principal, double interestRate, int numYears, int numTimesCompounded)
+        {
+            double body = (1 + (interestRate / numTimesCompounded));
+
+            // nt
+            double exponent = numTimesCompounded * numYears;
+
+            // Body to the Power expontents
+            double mid = Math.Pow(body, exponent);
+
+            // P(1 + r/n)^nt
+            double total = principal * mid;
+
+            return total;
+        }
 
 
     }//end class
