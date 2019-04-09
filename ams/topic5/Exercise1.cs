@@ -13,17 +13,21 @@ namespace Bank
         private double balance;
         private double interestRate;
 
-
+        public double Balance {
+            get; set;
+        }
+        public double InterestRate {
+            get; set;
+        }
         /// <summary>
         /// Creates a new bank account with no starting balance and the default
         /// interest rate.
         /// </summary>
-        public int BankAccount()
+        public BankAccount()
         {
-            set{
-                balance = 0;
-                interestRate = 2.00;
-            }
+            // ...
+            Balance = 0;
+            InterestRate = 2;
         }
 
         /// <summary>
@@ -33,8 +37,10 @@ namespace Bank
         /// <param name="startingBalance">The starting balance</param>
         public BankAccount(double startingBalance)
         {
-            balance = startingBalance;
-            interestRate = 2;
+            // ...
+            Balance = startingBalance;
+            InterestRate = 2;
+
         }
 
         /// <summary>
@@ -46,10 +52,10 @@ namespace Bank
         public BankAccount(double startingBalance, double interestRate)
         {
             // ...
-            balance = startingBalance;
-            interestRate = interestRate;
+            Balance = startingBalance;
+            InterestRate = interestRate;
         }
-
+        
         /// <summary>
         /// Reduce the balance of the bank account by 'amount' and return true.
         /// If there are insufficient funds in the account, the balance does not
@@ -62,15 +68,9 @@ namespace Bank
         public bool Withdraw(double amount)
         {
             // ...
-            get {
-                return balance;
-            }
-
-            if (balance >= amount)
+            if (Balance >= amount) 
             {
-                set {
-                    balance = balance - amount;
-                }
+                Balance = Balance - amount;
                 return true;
             }
             return false;
@@ -83,13 +83,7 @@ namespace Bank
         public void Deposit(double amount)
         {
             // ...
-            get {
-                return balance;
-            }
-            set {
-                balance = balance + amount;
-            }
-
+            Balance = Balance + amount;
         }
 
         /// <summary>
@@ -99,10 +93,7 @@ namespace Bank
         public double QueryBalance()
         {
             // ...
-            get {
-                return balance;
-            }
-
+            return Balance;
         }
 
         /// <summary>
@@ -110,10 +101,10 @@ namespace Bank
         /// </summary>
         /// <param name="interestRate">The interest rate for this account (%)
         /// </param>
-        public void SetInterestRate(double setInterestRate)
+        public void SetInterestRate(double interestRate)
         {
             // ...
-            interestRate = setInterestRate;
+            InterestRate = interestRate;
         }
 
         /// <summary>
@@ -123,9 +114,7 @@ namespace Bank
         public double GetInterestRate()
         {
             // ...
-            get {
-                return interestRate;
-            }
+            return InterestRate;
         }
 
         /// <summary>
@@ -135,15 +124,16 @@ namespace Bank
         public void AddInterest()
         {
             // ...
+            Balance = Balance + (Balance * (InterestRate/100));
         }
     }
+
     class Program
     {
         static void Main(string[] args)
         {
-            display();
             BankAccount myAccount = new BankAccount(0, 5);
-            myAccount.Deposit(1000);
+            myAccount.Deposit(100);
             myAccount.AddInterest();
             Console.WriteLine("My current bank balance is $ {0:0.00}\n", myAccount.QueryBalance());
 
