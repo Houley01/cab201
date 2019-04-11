@@ -59,6 +59,7 @@ namespace DiceRoller
     {
         // Implement your 'Dice' class here
         // ...
+
         private int dice;
         private int numFaces;
         private int faceValue;
