@@ -10,7 +10,61 @@ namespace StudentGradeOrder
     {
         // Implement the Student class here
         // ...
+        private string student;
+        private int grade;
+        private string degree;
+        private string lastName;
+        private string firstName;
+
+        private int compare;
+        private int compareGrade;
+        private int compareDegree;
+        private int compareLastName;
+        private int compareFirstName;
+        
+        public Student(string firstName, string lastName, string degree, int grade)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.degree = degree;
+            this.grade = grade;
+        }
+
+        public int CompareTo(Object o) {
+            Student temp = (Student)o;  
+            compareGrade = string.Compare(grade.ToString(), temp.grade.ToString());
+            compareDegree = string.Compare(degree, temp.degree);
+            // compareLastName = string.Compare(lastName, temp.lastName);
+            // compareFirstName = string.Compare(firstName, temp.firstName);
+            
+            if (compareGrade == 0) {
+                if (compareFirstName == 0) {
+                    if (compareLastName == 0) {
+                        compare = compareDegree;
+                    }
+                    else {
+                        // compare = compareLastName;
+                    }
+                }
+                else{
+                    // compare = compareFirstName;
+                }
+            }
+            else {
+                compare = compareGrade *-1;
+            }
+            return compare;
+        }
+
+        public override string ToString()
+        {
+            student = lastName + ", " + firstName + " (" + degree + ") "
+                + "Grade: " + grade.ToString();
+            return student;
+        }
     }
+
+        
     class Program
     {
         static void Main(string[] args)
