@@ -1,0 +1,141 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace DiceRoller 
+{
+    /// <summary>
+    /// Represents one die (singular of dice) with faces showing values between
+    /// 1 and the number of faces on the die.
+    /// </summary>
+    public class Die 
+    {
+        // Implement your 'Die' class here
+        // variables
+        private int numFaces;
+        private int faceValue;
+        Random rand = new Random();
+
+        // create default die
+        public Die()
+        {
+            numFaces = 6;
+            faceValue = 1;
+        }
+
+        // create die with custom num of faces above 3
+        public Die(int faces)
+        {
+            if (faces >= 3)
+            {
+                numFaces = faces;
+            }
+            else
+            {
+                numFaces = 6;
+            }
+            faceValue = 1;
+        }
+
+        // get random new faceValue
+        public void RollDie()
+        {
+            faceValue = rand.Next(numFaces) + 1;
+        }
+
+        // get faceValue (value of rolled die)
+        public int GetFaceValue()
+        {
+            return faceValue;
+        }
+
+        // get numFaces (# face die)
+        public int GetNumFaces()
+        {
+            return numFaces;
+        }
+    }// end Class Die
+
+    public class Dice
+    {
+        // Implement your 'Dice' class here
+        // variables
+        private int numFaces;
+        private int faceValue;
+        private int dice;
+        private int x;
+        Random rand = new Random();
+
+        // create a number of default dice
+        public Dice(int dice)
+        {
+            this.dice = dice;
+            numFaces = 6;
+            faceValue = dice;
+        }
+
+        // create a number of custom dice
+        public Dice(int dice, int faces)
+        {
+            this.dice = dice;
+            if (faces >= 3)
+            {
+                numFaces = faces;
+            }
+            else
+            {
+                numFaces = 6;
+            }
+            faceValue = dice;
+        }
+
+        // get total of random faceValue
+        public void RollDice()
+        {
+            faceValue = 0;
+            for (x = 0; x != dice; ++x)
+            {
+                faceValue += rand.Next(numFaces) + 1;
+            }
+        }
+
+        // get faceValue (value of rolled dice)
+        public int GetFaceValue()
+        {
+            return faceValue;
+        }
+    }// end class Dice
+
+    public class Program 
+    {
+        public static void Main() 
+        {
+            // This will not be called by the AMS, however you may want to test your Die class here.
+            // default test
+            Die myDie = new Die();
+            Console.WriteLine(myDie.GetNumFaces());
+
+            // test RollDie
+            myDie.RollDie();
+            Console.WriteLine(myDie.GetFaceValue());
+
+            // custom test
+            Die newDie = new Die(10);
+            Console.WriteLine(newDie.GetNumFaces());
+
+            // test RollDie
+            newDie.RollDie();
+            Console.WriteLine(newDie.GetFaceValue());
+
+            // test below minimum die
+            Die blehDie = new Die(2);
+            Console.WriteLine(blehDie.GetNumFaces());
+
+            // test multiple dice
+            Dice myDice = new Dice(2, 4);
+            myDice.RollDice();
+            Console.WriteLine(myDice.GetFaceValue());
+        }
+    }
+}

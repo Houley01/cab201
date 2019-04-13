@@ -79,7 +79,7 @@ namespace DiceRoller
         {
             this.dice = dice;
             numFaces = 6;
-            faceValue = dice; ;
+            faceValue = dice;
         }
 
         public Dice(int dice, int faces)
@@ -98,9 +98,12 @@ namespace DiceRoller
 
         public void RollDice()
         {
+            int DIEROLL = 0;
             for (int i = 0; i < dice; i++)
             {
-                faceValue += Roll.Next(numFaces) + 1;
+                DIEROLL = Roll.Next(numFaces) + 1;
+                // Console.WriteLine("ROLL {0} is:{1}", i, DIEROLL);
+                faceValue += DIEROLL;
             }
         }
 
@@ -115,14 +118,11 @@ namespace DiceRoller
     {
         public static void Main()
         {
-            Dice myDice = new Dice(2, 4);
+            Dice myDice = new Dice(1, 5);
 
-            // for (int i = 0; i < 100; i++)
-            // {
+
             myDice.RollDice();
-            Console.Write("{0} ", myDice.GetFaceValue());
-
-            // }
+            Console.WriteLine("Total for Each Roll: {0}\n", myDice.GetFaceValue());
 
 
             Console.WriteLine("\nPress enter to exit.");

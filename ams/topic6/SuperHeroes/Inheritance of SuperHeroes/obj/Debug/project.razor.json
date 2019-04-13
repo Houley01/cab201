@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\ethou\\Desktop\\Units\\cab201\\ams\\topic6\\SuperHeroes\\Inheritance of SuperHeroes\\Inheritance of SuperHeroes.csproj",
+  "TargetFramework": "v4.5.2",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}
