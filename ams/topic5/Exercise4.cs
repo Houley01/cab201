@@ -21,7 +21,7 @@ namespace StudentGradeOrder
         private int compareDegree;
         private int compareLastName;
         private int compareFirstName;
-        
+
         public Student(string firstName, string lastName, string degree, int grade)
         {
             this.firstName = firstName;
@@ -30,28 +30,42 @@ namespace StudentGradeOrder
             this.grade = grade;
         }
 
-        public int CompareTo(Object o) {
-            Student temp = (Student)o;  
+        public int CompareTo(Object o)
+        {
+            Student temp = (Student)o;
             compareGrade = string.Compare(grade.ToString(), temp.grade.ToString());
             compareDegree = string.Compare(degree, temp.degree);
-            // compareLastName = string.Compare(lastName, temp.lastName);
-            // compareFirstName = string.Compare(firstName, temp.firstName);
-            
-            if (compareGrade == 0) {
-                if (compareFirstName == 0) {
-                    if (compareLastName == 0) {
-                        compare = compareDegree;
+            compareLastName = string.Compare(lastName, temp.lastName);
+            compareFirstName = string.Compare(firstName, temp.firstName);
+
+            if (compareGrade == 0)
+            {
+                if (compareDegree == 0)
+                {
+                    if (compareLastName == 0)
+                    {
+                        if (compareFirstName == 0)
+                        {
+                            // do nothing
+                        }
+                        else
+                        {
+                            compare = compareFirstName;
+                        }
                     }
-                    else {
-                        // compare = compareLastName;
+                    else
+                    {
+                        compare = compareLastName * -1;
                     }
                 }
-                else{
-                    // compare = compareFirstName;
+                else
+                {
+                    compare = compareDegree;
                 }
             }
-            else {
-                compare = compareGrade *-1;
+            else
+            {
+                compare = compareGrade * -1;
             }
             return compare;
         }
@@ -64,7 +78,7 @@ namespace StudentGradeOrder
         }
     }
 
-        
+
     class Program
     {
         static void Main(string[] args)
