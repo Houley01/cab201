@@ -55,8 +55,10 @@ namespace Inheritance_of_SuperHeroes {
         }//end GetPowerValue
 
         public virtual void SwitchIdentity() {
-         
-            /// Code to be written
+
+            string temp = currentIdentity;
+            currentIdentity = otherIdentity;
+            otherIdentity = temp;
 
         }//end SwitchIdentity
 

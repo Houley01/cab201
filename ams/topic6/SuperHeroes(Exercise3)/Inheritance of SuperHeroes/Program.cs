@@ -20,11 +20,9 @@ namespace Inheritance_of_SuperHeroes {
 
         static void Main(string[] args) {
 
- //           TestHumans();
-
- //           TestEnhancedHumans();
-
- //           TestSuperHumans();
+            TestHumans();
+            TestEnhancedHumans();
+            TestSuperHumans();
 
             Console.Write("\n\n\nPress any key to exit ...");
             Console.ReadKey();
@@ -41,7 +39,7 @@ namespace Inheritance_of_SuperHeroes {
          */
 
 
-        /*        static void TestHumans() {
+                static void TestHumans() {
 
                     Human Batman = new Human("Bruce Wayne", "Batman");
                     Human BlackCanary = new Human(" Dinah Drake", "Black Canary");
@@ -66,10 +64,9 @@ namespace Inheritance_of_SuperHeroes {
                                           BlackCanary.TotalPower());
 
                 }//end TestHumans
-        */
 
 
-        /*        static void TestEnhancedHumans() {
+        static void TestEnhancedHumans() {
 
                     Enhanced_Human CaptainMarvel = new Enhanced_Human("Billy Batson", "Captain Marvel", new List<SuperPower> {  SuperPower.Flight,SuperPower.SuperStrength,
                                                                                                SuperPower.Invulnerability});
@@ -109,10 +106,9 @@ namespace Inheritance_of_SuperHeroes {
 
 
                 }//end TestEnhancedHumans
-        */
 
 
-        /*       static void TestSuperHumans() {
+      static void TestSuperHumans() {
 
                     Super_Human WonderWoman = new Super_Human("Wonder Woman", "Diana Prince", new List<SuperPower> { SuperPower.SuperStrength, SuperPower.SuperIntellect });
 
@@ -141,7 +137,7 @@ namespace Inheritance_of_SuperHeroes {
                 //    Console.WriteLine("\n\n SH6: Fortuantely if the kryptonite is removed, Superman regains his original powers. [Clark Kent, 385]:\n\n\t\t\t {0}, {1}\n\n", Superman.CurrentIdentity(), Superman.TotalPower());
 
                 }//end TestSuperHumans
-        */
+
 
 
     }//end class

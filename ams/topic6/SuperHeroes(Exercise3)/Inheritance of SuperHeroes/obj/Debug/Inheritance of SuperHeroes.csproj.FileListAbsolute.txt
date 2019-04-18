@@ -16,3 +16,10 @@
 \\qut.edu.au\Documents\StaffHome\StaffGroupR$\roggenka\Desktop\CAB201 Last Time\Projeccts\SuperHeroes Shell\Inheritance of SuperHeroes\bin\Debug\Inheritance of SuperHeroes.exe.config
 \\qut.edu.au\Documents\StaffHome\StaffGroupR$\roggenka\Desktop\CAB201 Last Time\Projeccts\SuperHeroes Shell\Inheritance of SuperHeroes\obj\Debug\Inheritance of SuperHeroes.exe
 \\qut.edu.au\Documents\StaffHome\StaffGroupR$\roggenka\Desktop\CAB201 Last Time\Projeccts\SuperHeroes Shell\Inheritance of SuperHeroes\obj\Debug\Inheritance of SuperHeroes.pdb
+D:\Desktop\QUT\2019_Semster_1\cab201\ams\topic6\SuperHeroes\Inheritance of SuperHeroes\bin\Debug\Inheritance of SuperHeroes.exe.config
+D:\Desktop\QUT\2019_Semster_1\cab201\ams\topic6\SuperHeroes\Inheritance of SuperHeroes\bin\Debug\Inheritance of SuperHeroes.exe
+D:\Desktop\QUT\2019_Semster_1\cab201\ams\topic6\SuperHeroes\Inheritance of SuperHeroes\bin\Debug\Inheritance of SuperHeroes.pdb
+D:\Desktop\QUT\2019_Semster_1\cab201\ams\topic6\SuperHeroes\Inheritance of SuperHeroes\obj\Debug\Inheritance of SuperHeroes.csprojAssemblyReference.cache
+D:\Desktop\QUT\2019_Semster_1\cab201\ams\topic6\SuperHeroes\Inheritance of SuperHeroes\obj\Debug\Inheritance of SuperHeroes.csproj.CoreCompileInputs.cache
+D:\Desktop\QUT\2019_Semster_1\cab201\ams\topic6\SuperHeroes\Inheritance of SuperHeroes\obj\Debug\Inheritance of SuperHeroes.exe
+D:\Desktop\QUT\2019_Semster_1\cab201\ams\topic6\SuperHeroes\Inheritance of SuperHeroes\obj\Debug\Inheritance of SuperHeroes.pdb
